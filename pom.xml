@@ -13,6 +13,7 @@
         <module>collection-interfaces</module>
         <module>stream-api</module>
         <module>date-and-time-api</module>
+        <module>tasktwo</module>
     </modules>
 
     <properties>
