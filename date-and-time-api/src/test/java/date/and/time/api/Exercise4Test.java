@@ -5,9 +5,11 @@ import common.test.tool.dataset.DateAndTimes;
 
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -20,7 +22,7 @@ public class Exercise4Test {
          * Create a {@link ZonedDateTime} with time of 2015-07-10 2:14:25.000 as Japan Standard Time
          * by using {@link ZonedDateTime#of} and {@link ZoneId#of}
          */
-        ZonedDateTime zonedDateTime = null;
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(LocalDateTime.of(2015, 7, 10, 2, 14, 25, 0), ZoneId.of("Asia/Tokyo"));
 
         assertThat(zonedDateTime.toString(), is("2015-07-10T02:14:25+09:00[Asia/Tokyo]"));
     }
@@ -31,7 +33,7 @@ public class Exercise4Test {
          * Create a {@link ZonedDateTime} with time of 2015-06-18 23:07:25.000 as Japan Standard Time
          * by using {@link ZonedDateTime#parse}
          */
-        ZonedDateTime zonedDateTime = null;
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse("2015-06-18 23:07:25.000").withZoneSameLocal(ZoneId.of("Asia/Tokyo"));
 
         assertThat(zonedDateTime.toString(), is("2015-06-18T23:07:25+09:00[Asia/Tokyo]"));
     }
@@ -44,7 +46,7 @@ public class Exercise4Test {
          * Format {@link zdt} to a {@link String} as "2015_06_18_23_07_30_JST"
          * by using {@link ZonedDateTime#format}
          */
-        String strZdt = null;
+        String strZdt = zdt.format(DateTimeFormatter.ofPattern("2015_06_18_23_07_30_JST"));
 
         assertThat(strZdt, is("2015_06_18_23_07_30_JST"));
     }

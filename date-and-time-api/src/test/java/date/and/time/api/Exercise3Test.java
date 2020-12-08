@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.TemporalUnit;
 
@@ -45,7 +46,7 @@ public class Exercise3Test {
          * Create a {@link LocalDateTime} from {@link ldt}
          * with first day of the next month and also truncated to hours.
          */
-        LocalDateTime localDateTime = ldt.with(TemporalAdjusters.firstDayOfNextMonth());
+        LocalDateTime localDateTime = ldt.with(TemporalAdjusters.firstDayOfNextMonth()).truncatedTo(ChronoUnit.HOURS);
 
         assertThat(localDateTime.toString(), is("2015-07-01T23:00"));
     }
